@@ -102,7 +102,7 @@ app.get("/matches/:matchId/players", async (request, response) => {
  FROM
  player_match_score natural join player_details where match_id=${matchId};`;
   const allplayersarray = await db.all(getdetailsQuery);
-  response.send(allplayersarray.map((each) => playerdetailsconvertion(each)));
+  response.send(allplayersarray);
 });
 
 //statsofplayer api7

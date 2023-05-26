@@ -19,6 +19,7 @@ const playerdetailsconvertion = (dbObject) => {
     playerName: dbObject.player_name,
   };
 };
+
 const initializedb = async () => {
   try {
     db = await open({
@@ -120,7 +121,7 @@ app.get("/players/:playerId/playerScores", async (request, response) => {
     WHERE player_details.player_id = ${playerId};
     `;
   const allplayersarray = await db.all(getPlayerScored);
-  response.send(allplayersarray);
+  response.send(...allplayersarray);
 });
 
 module.exports = app;
